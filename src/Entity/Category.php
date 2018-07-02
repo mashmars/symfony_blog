@@ -46,6 +46,10 @@ class Category
     public function __construct()
     {
         $this->articles = new ArrayCollection();
+
+        $this->setCreatedAt(new \DateTime('now'));
+        $this->setPid(0);
+        $this->setLevel(1); //一级菜单
     }
 
     public function getId()

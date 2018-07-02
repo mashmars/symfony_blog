@@ -42,6 +42,9 @@ class Tag
     public function __construct()
     {
         $this->articles = new ArrayCollection();
+
+        $this->setCreatedAt(new \DateTime('now'));
+        $this->setStatus(true);
     }
 
     public function getId()

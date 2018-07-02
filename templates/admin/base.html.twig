@@ -261,17 +261,19 @@
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
-            {% block breadcrumb %}
+
             <div class="row page-titles">
                 <div class="col-md-5 col-8 align-self-center">
                     <!--<h3 class="text-themecolor m-b-0 m-t-0">Layout Fix-header &amp; sidebar</h3>-->
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                        {% block breadcrumb %}
                         <li class="breadcrumb-item active">Layout Fix-header &amp; sidebar</li>
+                        {% endblock %}
                     </ol>
                 </div>
             </div>
-            {% endblock %}
+
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
