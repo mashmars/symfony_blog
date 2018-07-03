@@ -22,6 +22,17 @@ use App\Entity\Tag as TagEntity;
 class Tag extends Controller
 {
     /**
+     * @Route("/index",name="tag_index")
+     */
+    public function index()
+    {
+        $repository = $this->getDoctrine()->getRepository(TagEntity::class);
+        $res = $repository->findAll();
+        return $this->render('admin/tag/index.html.twig',[
+           'res'    =>  $res,
+        ]);
+    }
+    /**
      * @Route("/add",name="tag_add",methods={"GET","POST"})
      */
     public function add(Request $request)
@@ -34,7 +45,7 @@ class Tag extends Controller
             $tag = $form->getData();
             $entityManager->persist($tag);
             $entityManager->flush();
-            return new Response('添加成功');
+            return $this->redirectToRoute('tag_index');
         }
         return $this->render('admin/tag/add.html.twig',['form'=>$form->createView()]);
     }

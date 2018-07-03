@@ -1,0 +1,47 @@
+{% extends 'admin/base.html.twig' %}
+{% block breadcrumb %}
+    <li class="breadcrumb-item active">Layout Fix-header &amp; sidebar</li>
+{% endblock %}
+{% block main %}
+{% form_theme form 'admin/field.html.twig' %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+{% endblock %}
+{% block js %}
+    {{ parent() }}
+    <!-- ============================================================== -->
+    <!-- 自定义js -->
+    <!-- ============================================================== -->
+    <script src="{{ asset('lib/ckeditor5/ckeditor.js') }}"></script>
+    <!--ckeditor5默认编辑器的高度
+    ckditor5上传图片，需要返回json数据，字段return json([‘uploaded’=>true,’url’=>$url]);方可 预览,成功true，失败false
+    -->
+    <style>
+        .ck-editor__editable {
+            min-height: 300px;
+        }
+    </style>
+    <script>
+        /*ClassicEditor
+            .create( document.querySelector( '#article_content' ) ,{
+                    //toolbar: ['imageUpload','link'],
+
+                    ckfinder: {
+                        uploadUrl : '/admin/Upload/uploadImages?command=QuickUpload&type=Files&responseType=json'
+                        //后端处理上传逻辑返回json数据,包括uploaded(选项true/false)和url两个字段
+                    },
+                })
+            .catch( error => {
+                console.error( error );
+            } );*/
+
+    </script>
+{% endblock %}

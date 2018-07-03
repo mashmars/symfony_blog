@@ -28,7 +28,6 @@
     <![endif]-->
 </head>
 <body class="fix-sidebar fix-header card-no-border">
-{% form_theme form 'admin/field.html.twig' %}
 <!-- ============================================================== -->
 <!-- Preloader - style you can find in spinners.css -->
 <!-- ============================================================== -->
@@ -49,7 +48,7 @@
             <!-- Logo -->
             <!-- ============================================================== -->
             <div class="navbar-header">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="/admin/index">
                     <!-- Logo icon -->
                     <b>
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -147,16 +146,17 @@
                 <ul id="sidebarnav">
                     <li class="nav-small-cap">PERSONAL</li>
                     <li>
-                        <a class="has-arrow waves-effect waves-dark" href="javascript:void(0);" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard </span></a>
+                        <a class="has-arrow waves-effect waves-dark" href="javascript:void(0);" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">控制面板 </span></a>
                         <ul aria-expanded="false" class="collapse">
-                            <li><a href="index.html">Dashboard 1</a></li>
+                            <li><a href="/admin/index">后台主页</a></li>
 
                         </ul>
                     </li>
-                    <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0);" aria-expanded="false"><i class="mdi mdi-laptop-windows"></i><span class="hide-menu">Template Demos</span></a>
+                    <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0);" aria-expanded="false"><i class="mdi mdi-laptop-windows"></i><span class="hide-menu">文章管理</span></a>
                         <ul aria-expanded="false" class="collapse">
-                            <li><a href="./minisidebar/index.html">Minisidebar</a></li>
-
+                            <li><a href="{{ path('category_index') }}">分类列表</a></li>
+                            <li><a href="{{ path('tag_index') }}">标签列表</a></li>
+                            <li><a href="{{ path('article_index') }}">文章列表</a></li>
                         </ul>
                     </li>
                     <li>
@@ -281,6 +281,7 @@
             <!-- Start Page Content -->
             <!-- ============================================================== -->
             {% block main %}
+
             <div class="row">
                 <!-- Column -->
                 <div class="col-lg-3 col-md-6">

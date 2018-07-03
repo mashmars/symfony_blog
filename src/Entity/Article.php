@@ -57,18 +57,19 @@ class Article
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     *
      */
-    private $views;
+    private $views= 0;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $is_comment;
+    private $is_comment= 1;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $status;
+    private $status= 1;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="article")
@@ -84,6 +85,12 @@ class Article
     {
         $this->comments = new ArrayCollection();
         $this->tags = new ArrayCollection();
+
+        //自定义
+        $this->setCreatedAt(new \DateTime('now'));
+
+
+
     }
 
 

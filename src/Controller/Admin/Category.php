@@ -18,7 +18,17 @@ use App\Entity\Category as CategoryEntity;
  */
 class Category extends  Controller
 {
-
+    /**
+     * @Route("/index",name="category_index")
+     */
+    public function index()
+    {
+        $repository = $this->getDoctrine()->getRepository(CategoryEntity::class);
+        $res = $repository->findAll();
+        return $this->render('admin/category/index.html.twig',[
+            'res'   =>  $res,
+        ]);
+    }
     /**
      * @Route("/add",name="category_add",methods={"GET","POST"})
      */
@@ -32,6 +42,7 @@ class Category extends  Controller
             $category = $form->getData();
             $entityManager->persist($category);
             $entityManager->flush();
+            return $this->redirectToRoute('category_index');
         }
         return $this->render('admin/category/add.html.twig',['form'=>$form->createView()]);
     }

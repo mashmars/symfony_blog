@@ -44,17 +44,11 @@
 {%- endblock textarea_widget -%}
 
 {%- block checkbox_widget -%}
-<div class="col-10 demo-checkbox">
-    <input type="checkbox" class="filled-in chk-col-blue" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
-    <label for="{{ id }}">{{ value }}</label>
-</div>
+    <input type="checkbox" class="chk-col-green" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
 {%- endblock checkbox_widget -%}
 
 {%- block radio_widget -%}
-<div class="col-10 demo-radio-button">
     <input type="radio" class="with-gap radio-col-light-blue" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
-    <label for="{{ id }}">{{ value }}</label>
-</div>
 {%- endblock radio_widget -%}
 
 {%- block choice_widget_collapsed -%}
@@ -131,3 +125,21 @@
         <button class="btn btn-inverse waves-effect waves-light" type="reset" {{ block('button_attributes') }}>重置</button>
     </div>
 {%- endblock button_widget -%}
+
+{#choice#}
+{%- block choice_widget_expanded -%}
+    <div class="col-10 demo-checkbox">
+        {%- for child in form %}
+            {{- form_widget(child) -}}
+            {{- form_label(child, null, {translation_domain: choice_translation_domain}) -}}
+        {% endfor -%}
+    </div>
+{%- endblock choice_widget_expanded -%}
+
+{%- block form_widget_compound -%}
+    {%- if form is rootform -%}
+        {{ form_errors(form) }}
+    {%- endif -%}
+    {{- block('form_rows') -}}
+    {{- form_rest(form) -}}
+{%- endblock form_widget_compound -%}

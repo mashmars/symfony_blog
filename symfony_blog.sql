@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2018-07-02 17:08:17
+Date: 2018-07-03 14:27:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -22,12 +22,12 @@ DROP TABLE IF EXISTS `article`;
 CREATE TABLE `article` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descript` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descript` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `thumb` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   `content` longtext COLLATE utf8mb4_unicode_ci,
-  `category_id` int(11) NOT NULL,
+  `category_id` int(11) DEFAULT NULL,
   `views` int(11) DEFAULT NULL,
   `is_comment` tinyint(1) NOT NULL,
   `status` tinyint(1) NOT NULL,
@@ -35,6 +35,10 @@ CREATE TABLE `article` (
   KEY `IDX_23A0E6612469DE2` (`category_id`),
   CONSTRAINT `FK_23A0E6612469DE2` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ----------------------------
+-- Records of article
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for article_tag
@@ -51,6 +55,10 @@ CREATE TABLE `article_tag` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
+-- Records of article_tag
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for category
 -- ----------------------------
 DROP TABLE IF EXISTS `category`;
@@ -61,7 +69,15 @@ CREATE TABLE `category` (
   `created_at` datetime NOT NULL,
   `level` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ----------------------------
+-- Records of category
+-- ----------------------------
+INSERT INTO `category` VALUES ('1', '0', 'Symfony4', '2018-07-03 08:00:14', '1');
+INSERT INTO `category` VALUES ('2', '0', 'Thinkphp5', '2018-07-03 08:00:53', '1');
+INSERT INTO `category` VALUES ('3', '0', 'Flask', '2018-07-03 08:01:33', '1');
+INSERT INTO `category` VALUES ('4', '0', 'Thinkphp3', '2018-07-03 08:01:55', '1');
 
 -- ----------------------------
 -- Table structure for comment
@@ -78,6 +94,10 @@ CREATE TABLE `comment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
+-- Records of comment
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for migration_versions
 -- ----------------------------
 DROP TABLE IF EXISTS `migration_versions`;
@@ -85,6 +105,17 @@ CREATE TABLE `migration_versions` (
   `version` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`version`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of migration_versions
+-- ----------------------------
+INSERT INTO `migration_versions` VALUES ('20180702034242');
+INSERT INTO `migration_versions` VALUES ('20180702034741');
+INSERT INTO `migration_versions` VALUES ('20180702035945');
+INSERT INTO `migration_versions` VALUES ('20180702044226');
+INSERT INTO `migration_versions` VALUES ('20180702044625');
+INSERT INTO `migration_versions` VALUES ('20180702050942');
+INSERT INTO `migration_versions` VALUES ('20180702051247');
 
 -- ----------------------------
 -- Table structure for tag
@@ -96,7 +127,17 @@ CREATE TABLE `tag` (
   `created_at` datetime DEFAULT NULL,
   `status` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ----------------------------
+-- Records of tag
+-- ----------------------------
+INSERT INTO `tag` VALUES ('1', 'PHP', '2018-07-03 08:06:41', '1');
+INSERT INTO `tag` VALUES ('2', 'SYMFONY4', '2018-07-03 08:06:54', '1');
+INSERT INTO `tag` VALUES ('3', 'THINKPHP5', '2018-07-03 08:07:03', '1');
+INSERT INTO `tag` VALUES ('4', 'THINKPHP3', '2018-07-03 08:07:13', '1');
+INSERT INTO `tag` VALUES ('5', 'PYTHON', '2018-07-03 08:07:26', '1');
+INSERT INTO `tag` VALUES ('6', 'FLASK', '2018-07-03 08:07:33', '1');
 
 -- ----------------------------
 -- Table structure for users
@@ -111,4 +152,8 @@ CREATE TABLE `users` (
   `created_at` datetime NOT NULL,
   `status` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ----------------------------
+-- Records of users
+-- ----------------------------
