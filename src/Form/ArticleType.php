@@ -14,7 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Doctrine\ORM\EntityRepository;
 
@@ -63,6 +63,7 @@ class ArticleType extends AbstractType
                 'expanded'  =>  true,
                 'multiple'  =>  true,
             ])
+            ->add('thumb',FileType::class,['label'=>'上传','data_class'=>null])
             ->add('is_comment',ChoiceType::class,[
                 'label' =>  '是否评论',
                 'choices'    =>  [

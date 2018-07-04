@@ -39,7 +39,7 @@
 					<div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Bordered Table</h4>                                
+                                <h4 class="card-title">文章列表</h4>
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-hover">
                                         <thead>
@@ -55,17 +55,21 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        {% for article in res %}
+                                        {% for article in pagination %}
                                             <tr>
                                                 <td>{{ article.id }}</td>
-                                                <td>{{ article.catagory.name }}</td>
+                                                <td>{{ article.category.name }}</td>
                                                 <td>{{ article.title }}</td>
                                                 <td>{{ article.descript }}</td>
-                                                <td></td>
+                                                <td>
+                                                    {% for tag in article.tags %}
+                                                    {{ tag.name }},
+                                                    {% endfor %}
+                                                </td>
                                                 <td>{{ article.views }}</td>
-                                                <td>{{ article.created_at }}</td>
+                                                <td>{{ article.createdAt|date('Y-m-d') }}</td>
                                                 <td class="text-nowrap">
-                                                    <a href="#" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                                                    <a href="{{ path('article_edit',{'id':article.id}) }}" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
                                                     <a href="#" data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-close text-danger"></i> </a>
                                                 </td>
                                             </tr>
@@ -78,17 +82,7 @@
                     </div>             
 				</div>
 				<nav aria-label="Page navigation" class="pull-right m-b-40">
-					<ul class="pagination">
-						<li class="page-item disabled">
-							<a class="page-link" href="#" tabindex="-1">Previous</a>
-						</li>
-						<li class="page-item"><a class="page-link" href="#">1</a></li>
-						<li class="page-item"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item">
-							<a class="page-link" href="#">Next</a>
-						</li>
-					</ul>
+                    {{ knp_pagination_render(pagination) }}
 				</nav>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
