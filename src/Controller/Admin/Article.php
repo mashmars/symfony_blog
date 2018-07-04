@@ -29,7 +29,7 @@ class Article extends Controller
         $repository = $this->getDoctrine()->getRepository(ArticleEntity::class);
         $query_builder = $repository->createQueryBuilder('u');
         $paginator = $this->get('knp_paginator');
-        $pagination = $paginator->paginate($query_builder,$page,2);
+        $pagination = $paginator->paginate($query_builder,$page,10);
         return $this->render('admin/article/index.html.twig',[
             'pagination'   =>  $pagination,
         ]);
