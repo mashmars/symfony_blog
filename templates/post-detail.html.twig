@@ -25,7 +25,7 @@
 			</div>
 			<div class="tags">
 				{% for tag in article.tags %}
-				<a href="">{{ tag.name }}</a>
+				<a href="{{ path('blog_tag',{'name':tag.name}) }}">{{ tag.name }}</a>
 				{% endfor %}
 			</div>
 			<div class="post-nav">
