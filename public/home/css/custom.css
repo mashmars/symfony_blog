@@ -1,0 +1,29 @@
+.post-tag{margin-top: 20px;font-size: 14px;}
+.post-tag .fa{font-size: 14px;}
+.post-tag a:hover{color:#40759b;border-bottom:1px solid #40759b}
+
+
+.pagination {
+    list-style: none;
+    padding: 0 0 25px 0;
+    font-size: 14px;
+    text-align: center;
+}
+.pagination .current {
+    background: #fff;
+}
+.pagination .current:hover {
+    border-bottom-color: #adc2d7
+}
+.pagination span {
+    display: inline-block;
+    margin: 0 5px 5px 0;
+    display: inline-block;
+    height: 25px;
+    line-height: 25px;
+    padding: 5px 9px;
+    text-align: center;
+    -webkit-box-shadow: 1px 2px 3px #adc2d7;
+    box-shadow: 1px 2px 3px #adc2d7;
+    border: 1px solid #adc2d7;
+}

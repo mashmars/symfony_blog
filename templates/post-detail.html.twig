@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ article.title }} {% endblock %}
+{% block main %}
+	<div class="content_container">
+		<div class="post">
+			<h1 class="post-title">{{ article.title }}</h1>
+			<div class="post-meta">
+				<a href="#" class="comment-count">
+					<i id="changyan_count_unit" data-xid="">0</i>留言,
+					<i id="changyan_parti_unit" data-xid="">0</i>参与
+				</a>
+				<p>
+					<span class="date">{{ article.createdAt|date('Y-m-d') }}</span>
+					<span><a href="" class="category">{{ article.category.name }}</a></span>
+					<span>
+						<i id="" style="display: inline;">
+							<i id="busuanzi_value_page_pv">{{ article.views }}</i>
+							<i>点击</i>
+						</i>
+					</span>
+				</p>
+			</div>
+			<div class="post-content">
+				{{ article.content|raw }}
+			</div>
+			<div class="tags">
+				{% for tag in article.tags %}
+				<a href="">{{ tag.name }}</a>
+				{% endfor %}
+			</div>
+			<div class="post-nav">
+                {% if prev is null %}
+				<a href="javascript:void(0);" class="pre">已经是第一篇文章了</a>
+                {% else %}
+				<a href="{{ path('blog_show',{'id':prev.id}) }}" class="pre">{{ prev.title }}</a>
+                {% endif %}
+                {% if next is null %}
+					<a href="javascript:void(0);" class="next">已经是最后一篇文章了</a>
+                {% else %}
+					<a href="{{ path('blog_show',{'id':next.id}) }}" class="next">{{ next.title }}</a>
+                {% endif %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

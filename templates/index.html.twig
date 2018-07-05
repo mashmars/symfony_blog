@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+{% block main %}
+<div class="content_container">
+	{% for article in pagination %}
+	<div class="post">
+		<h2 class="post-title"><a href="{{ path('blog_show',{'id':article.id}) }}">{{ article.title }}</a></h2>
+		<div class="post-meta">
+			<a href="#" class="comment-count">
+				<span id="" class="cy_cmt_count"></span>{{ article.views }}留言,
+				<span id="" class="cy_cmt_participate">{{ article.views }}</span>
+				阅读
+			</a>
+			<p>
+				<span class="date">{{ article.createdAt|date('Y-m-d') }}</span>
+				<span><a href="{{ path('blog_category',{'name':article.category.name}) }}" class="category">{{ article.category.name }}</a></span>
+			</p>
+		</div>
+		<div class="post-content">
+            {{ article.descript }}
+		</div>
+		<p class="post-tag">
+			{% for tag in article.tags %}
+			<a href="{{ path('blog_tag',{'name':tag.name}) }}"><i class="fa fa-biao"></i> {{ tag.name }}</a>
+			{% endfor %}
+		</p>
+
+		<p class="readmore">
+			<a href="{{ path('blog_show',{'id':article.id}) }}">阅读更多</a>
+		</p>
+	</div>
+	{% endfor %}
+    {{ knp_pagination_render(pagination) }}
+</div>
+{% endblock %}
