@@ -24,7 +24,7 @@ class Blog extends Controller
      */
     public function index($page=1)
     {
-        $list = 2;
+        $list = 6;
         $repository = $this->getDoctrine()->getRepository(Article::class);
         $query_builder = $repository->createQueryBuilder('u')->orderBy('u.id','DESC');
 
@@ -53,7 +53,7 @@ class Blog extends Controller
      */
     public function category($name,$page=1)
     {
-        $list = 2;
+        $list = 6;
         $entityManager = $this->getDoctrine()->getManager();
         $repository_c = $entityManager->getRepository(Category::class);
         $category = $repository_c->findOneBy(['name'=>$name]);
@@ -73,7 +73,7 @@ class Blog extends Controller
      */
     public function tag($name,$page=1)
     {
-        $list = 2;
+        $list = 6;
         $entityManager = $this->getDoctrine()->getManager();
 
         $repository_a = $entityManager->getRepository(Article::class);

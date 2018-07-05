@@ -27,7 +27,7 @@ class Article extends Controller
     {
         //$page = $request->query->get('page',1);
         $repository = $this->getDoctrine()->getRepository(ArticleEntity::class);
-        $query_builder = $repository->createQueryBuilder('u');
+        $query_builder = $repository->createQueryBuilder('u')->orderBy('u.id','DESC');
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate($query_builder,$page,10);
         return $this->render('admin/article/index.html.twig',[
